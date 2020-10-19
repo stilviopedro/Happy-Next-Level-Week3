@@ -1,11 +1,10 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createOrphanages1602663934201 implements MigrationInterface {
+export class createOrphanages1603057259392 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        // Vai realizar as alterações no banco de dados
         await queryRunner.createTable(new Table({
-            name: "orphanages",
+            name: 'orphanages',
             columns: [
                 {
                     name: 'id',
@@ -17,19 +16,19 @@ export class createOrphanages1602663934201 implements MigrationInterface {
                 },
                 {
                     name: 'name',
-                    type: 'varchar',
+                    type: 'varchar'
                 },
                 {
                     name: 'latitude',
                     type: 'decimal',
                     scale: 10,
-                    precision: 2,
+                    precision: 2
                 },
                 {
                     name: 'longitude',
                     type: 'decimal',
                     scale: 10,
-                    precision: 2,
+                    precision: 2
                 },
                 {
                     name: 'about',
@@ -40,16 +39,19 @@ export class createOrphanages1602663934201 implements MigrationInterface {
                     type: 'text',
                 },
                 {
-                    name: 'open_one_weekends',
+                    name: 'opening_hours',
+                    type: 'varchar'
+                },
+                {
+                    name: 'open_on_weekends',
                     type: 'boolean',
-                    default: false,
+                    default: true
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        // Vai desfazer as alterações no banco de dados
         await queryRunner.dropTable('orphanages');
     }
 
